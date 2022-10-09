@@ -1,2 +1,8 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>文字列投稿フォーム</h1>
+<%= form_with model: @post, url: user_posts_path do |f| %>
+  <div>
+    <%= f.label :body, "文字列"%>
+    <%= f.text_field :body, autofocus: true %>
+  </div>
+  <%= f.submit "投稿する"%>
+<% end %>
