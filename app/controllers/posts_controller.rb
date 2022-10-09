@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :login_required, only: [:new, :create]
+  before_action :ensure_correct_user, only: [:new]
 
   def new
     @post = Post.new
@@ -22,6 +23,13 @@ class PostsController < ApplicationController
 
   def login_required
     redirect_to login_path unless current_user
+  end
+
+  def ensure_correct_user
+    @user = User.find(params[:user_id])
+    if @user != current_user
+      redirect_to root_path
+    end
   end
 
   def post_params
