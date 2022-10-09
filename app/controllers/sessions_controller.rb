@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :login_required, only: [:new, :create]
+
   def new
   end
 
@@ -18,6 +20,10 @@ class SessionsController < ApplicationController
   end
 
   private
+
+  def login_required
+    redirect_to root_path if current_user
+  end
 
   def session_params
     params.require(:session).permit(:email, :password)
