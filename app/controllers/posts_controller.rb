@@ -1,9 +1,12 @@
 class PostsController < ApplicationController
+  before_action :login_required, only: [:new, :create]
+
   def new
     @post = Post.new
   end
 
   def index
+    @posts = Post.all
   end
 
   def create
@@ -16,6 +19,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def login_required
+    redirect_to login_path unless current_user
+  end
 
   def post_params
     params.require(:post).permit(:body)
