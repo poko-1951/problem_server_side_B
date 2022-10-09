@@ -1,0 +1,7 @@
+<h1>サーバーサイドB</h1>
+<% if current_user.nil? %>
+  <%= button_to "ユーザー登録", {controller: "users", action: "new"}, {method: :get} %>
+  <%= button_to "ログイン", {controller: "sessions", action: "new"}, {method: :get} %>
+<% else %>
+  <%= button_to "ログアウト", {controller: "sessions", action: "destroy"}, {method: :delete} %>
+<% end %>
