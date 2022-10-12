@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to root_path, notice: "投稿しました"
     else
-      redirect_to request.referer
+      redirect_to request.referer, notice: "入力されていません"
     end
   end
 

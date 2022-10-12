@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to new_user_post_path(user), notice: "ログイン完了"
     else
-      redirect_to request.referer
+      redirect_to request.referer, notice: "メールアドレスまたはパスワードが間違っています"
     end
   end
 
