@@ -1,15 +1,19 @@
 <h1>投稿一覧</h1>
-<table>
-  <thead>
-    <th>アカウント名</th>
-    <th>投稿内容</th>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.user.name %></td>
-        <td><%= post.body %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if @posts.empty? %>
+  <span>投稿されていません</span>
+<% else %>
+  <table>
+    <thead>
+      <th>アカウント名</th>
+      <th>投稿内容</th>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.user.name %></td>
+          <td><%= post.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
