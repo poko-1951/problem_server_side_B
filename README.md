@@ -1,24 +1,20 @@
-# README
+## 開発環境
+- Ruby 3.1.2
+- Ruby on Rails 6.1.7
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## ローカル環境での実行方法
+```
+$ git clone https://github.com/poko-1951/problem_server_side_A.git
+$ bundle install
+$ rails db:migrate
+```
 
-Things you may want to cover:
+以下のエラーが表示された場合には、Webpackerの再インストールを実行
 
-* Ruby version
+`Webpacker::Manifest::MissingEntryError`
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+（対処）以下を実行
+```
+bundle rails webpacker:install
+bundle rails webpacker:compile
+```
